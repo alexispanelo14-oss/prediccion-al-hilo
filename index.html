@@ -1,79 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predicción al Hilo</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand"><span class="ball">⚽</span> Predicción al Hilo</div>
-    <nav><a href="#inicio">Inicio</a><a href="#modelo">Modelo</a><a href="#partido">Predicción</a></nav>
-  </header>
-
-  <main id="inicio">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">ANÁLISIS DEPORTIVO</p>
-        <h1>Predicción <span>al Hilo</span></h1>
-        <p class="lead">Analizá un partido, compará sus fortalezas y obtené una predicción clara del resultado más probable.</p>
-        <a class="primary" href="#partido">Crear predicción →</a>
-      </div>
-      <div class="hero-card">
-        <div class="mini-title">EJEMPLO</div>
-        <div class="teams"><b>🇦🇷 Argentina</b><strong>VS</strong><b>🇺🇸 EE.UU.</b></div>
-        <div class="prob"><div><span>Argentina</span><b>42%</b></div><i><em style="width:42%"></em></i><div><span>Empate</span><b>31%</b></div><i><em style="width:31%"></em></i><div><span>EE.UU.</span><b>27%</b></div><i><em style="width:27%"></em></i></div>
-        <div class="score">Marcador sugerido <b>1 - 0</b></div>
-      </div>
-    </section>
-
-    <section id="partido" class="panel">
-      <div class="section-head">
-        <div><p class="eyebrow">NUEVO ANÁLISIS</p><h2>Ingresá los datos del partido</h2></div>
-        <span class="badge">MODO DEMO</span>
-      </div>
-      <div class="form-grid">
-        <label>Equipo local<input id="home" value="Argentina"></label>
-        <label>Equipo visitante<input id="away" value="Brasil"></label>
-        <label>Fuerza local (0–100)<input id="homeStrength" type="number" min="0" max="100" value="75"></label>
-        <label>Fuerza visitante (0–100)<input id="awayStrength" type="number" min="0" max="100" value="72"></label>
-        <label>Forma local (0–100)<input id="homeForm" type="number" min="0" max="100" value="78"></label>
-        <label>Forma visitante (0–100)<input id="awayForm" type="number" min="0" max="100" value="70"></label>
-        <label>Defensa local (0–100)<input id="homeDef" type="number" min="0" max="100" value="76"></label>
-        <label>Defensa visitante (0–100)<input id="awayDef" type="number" min="0" max="100" value="73"></label>
-      </div>
-      <button class="primary full" onclick="predict()">Analizar partido</button>
-    </section>
-
-    <section id="resultado" class="panel result hidden">
-      <div class="section-head"><div><p class="eyebrow">RESULTADO</p><h2 id="resultTitle">Predicción</h2></div><span class="badge">ESTIMACIÓN</span></div>
-      <div class="main-result">
-        <div class="result-box"><span id="winnerLabel">Favorito</span><strong id="winner">—</strong><small id="winnerPct">—</small></div>
-        <div class="vs">VS</div>
-        <div class="result-box"><span>Marcador probable</span><strong id="score">—</strong><small>estimación principal</small></div>
-      </div>
-      <div class="bars">
-        <div><span id="homeName">Local</span><b id="pHome">0%</b><i><em id="barHome"></em></i></div>
-        <div><span>Empate</span><b id="pDraw">0%</b><i><em id="barDraw"></em></i></div>
-        <div><span id="awayName">Visitante</span><b id="pAway">0%</b><i><em id="barAway"></em></i></div>
-      </div>
-      <div class="scenarios">
-        <div><h3>🔎 Lectura del partido</h3><p id="reading"></p></div>
-        <div><h3>⚠️ Escenario de ruptura</h3><p id="breakout"></p></div>
-      </div>
-    </section>
-
-    <section id="modelo" class="features">
-      <div><p class="eyebrow">EL CONCEPTO</p><h2>Predicción con contexto, no solo números</h2></div>
-      <div class="feature-grid">
-        <article><span>01</span><h3>Matchup</h3><p>Compará fortalezas, forma y defensa de ambos equipos.</p></article>
-        <article><span>02</span><h3>Escenarios</h3><p>Considerá cómo puede cambiar el partido ante un gol, expulsión o lesión.</p></article>
-        <article><span>03</span><h3>Resultado</h3><p>Obtené probabilidades y un marcador estimado de forma sencilla.</p></article>
-      </div>
-    </section>
-  </main>
-  <footer>Predicción al Hilo · Proyecto inicial · Las predicciones son estimaciones y no garantizan resultados.</footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07111f"><title>Predicción al Hilo</title><link rel="stylesheet" href="style.css"></head><body>
+<header><a class="brand" href="#">⚽ Predicción al Hilo</a><button class="menu" onclick="document.body.classList.toggle('open')">☰</button><nav><a href="#partidos">Partidos</a><a href="#como">Cómo funciona</a><a href="#legal">Avisos</a></nav></header>
+<section class="hero"><div><p class="eyebrow">PREDICCIONES DE FÚTBOL</p><h1>Elegí el partido.<br><span>Nosotros lo analizamos.</span></h1><p>Una respuesta simple: <b>posible marcador exacto, empate o ganador.</b></p><a class="cta" href="#partidos">Ver próximos partidos</a></div><div class="ball">⚽</div></section>
+<main id="partidos"><div class="sectionHead"><div><p class="eyebrow">PRÓXIMOS PARTIDOS</p><h2>Elegí qué querés analizar</h2></div><button class="refresh" onclick="loadMatches()">↻ Actualizar</button></div>
+<div class="filters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="champions">Champions</button><button class="filter" data-filter="libertadores">Libertadores</button><button class="filter" data-filter="sudamericana">Sudamericana</button><button class="filter" data-filter="amistosos">Selecciones</button></div>
+<div id="status">Cargando partidos…</div><div id="matches"></div></main>
+<section id="como" class="explain"><p class="eyebrow">EL PROCESO</p><h2>Un análisis profundo. Una respuesta simple.</h2><div class="steps"><article><b>01</b><h3>Elegís</h3><p>Seleccionás el partido.</p></article><article><b>02</b><h3>Analizamos</h3><p>El sistema evalúa los parámetros del modelo y escenarios de ruptura.</p></article><article><b>03</b><h3>Resultado</h3><p>Mostramos solamente la predicción principal.</p></article></div></section>
+<footer id="legal"><p>© <span id="year"></span> Predicción al Hilo. Todos los derechos reservados.</p><p>Las predicciones son estimaciones y no garantizan resultados. No constituyen asesoramiento financiero ni recomendación de apuestas.</p></footer>
+<div id="modal" class="modal hidden"><div class="modalCard"><button class="close" onclick="closeModal()">×</button><p class="eyebrow">ANÁLISIS EN CURSO</p><h2 id="modalTitle"></h2><div class="timer"><span id="countdown">05:00</span><small>analizando</small></div><div class="checks"><span>✓ Matchup específico</span><span>✓ Forma reciente</span><span>✓ Contexto y localía</span><span>✓ Plantel y bajas</span><span>✓ Táctica y estilo</span><span>✓ Escenarios de ruptura</span></div><div id="final" class="hidden"><p class="eyebrow">PREDICCIÓN FINAL</p><div id="prediction" class="prediction"></div><button class="cta" onclick="closeModal()">Cerrar</button></div></div></div>
+<script src="matches.js"></script><script src="app.js"></script></body></html>
